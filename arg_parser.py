@@ -3,6 +3,7 @@
 import os
 import argparse
 from typing import NamedTuple
+from metadata_operations import ReplacementData
 from exceptions import NoDataProvided, FileFormatNotSpecified, FileFormatIsNotSupported, WrongInputFormat, ArgumentRequiredError
 
 SUPPORTED_FORMATS = ("jpg", "jpeg", "png", "py")
@@ -20,13 +21,15 @@ parser.add_argument("-s", "--show", type=str, help="Insert PATH to the file. Sho
     Otherwise shows notification, that there is no metadata in the current file.")
 parser.add_argument("-r", "--remove", type=str, help="Insert PATH to the file. Removes all metadata from the file.")
 parser.add_argument("--replace", action="store_true", help="Replace Metadata of the give file.")
-parser.add_argument("-d", "--device", type=str, help="REQUIRED WITH '--replace'. Metadate template for the specified device.")
+parser.add_argument("-d", "--device", type=str, help=f"REQUIRED WITH '--replace'.\n\
+    Metadate template for the specified device. Available optiond -->\n{ReplacementData.available_options}")
 parser.add_argument("-p", "--path", type=str, help="REQUIRED WITH '--replace'. Path to the file.")
 
 
 def _validate_device_and_path(args: argparse.Namespace) -> tuple:
     device = args.device
     path = args.path
+    print(f"PATH -> {path}")
     if not device or not path:
         raise ArgumentRequiredError("Error -> '--device' and '--path' arguments are required with '--replace'.")
     return device, path

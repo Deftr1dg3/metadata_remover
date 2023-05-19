@@ -17,3 +17,6 @@ class NoMetaDataForRequestedDevice(Exception):
 
 class ArgumentRequiredError(Exception):
     ...
+
+class DoesNotApplicableForCurrentFormat(Exception):
+    ...
