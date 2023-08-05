@@ -1,0 +1,10 @@
+build
+dist
+.mypy_cache
+__pycache__
+files
+metadata.spec
+MetaData.code-workspace
+.vscode
+
+

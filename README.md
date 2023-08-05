@@ -1,5 +1,5 @@
 
-## Utility removes metadata from *.jpg file.
+# Utility removes or replaces metadata in *.jpg file.
 
-Also, there is possibility to replace metadat with metadata template, that was created on Samsung S20 FE device.
+The CLI is very easy. Just type "./metadata --help" to see all options.
 

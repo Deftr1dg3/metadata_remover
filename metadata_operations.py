@@ -3,7 +3,6 @@
 import os
 import piexif
 import datetime as dt
-from abc import ABC, abstractclassmethod
 from PIL import Image, ExifTags
 from exceptions import NoMetaDataForRequestedDevice, DoesNotApplicableForCurrentFormat
 
@@ -28,22 +27,7 @@ class ReplacementData:
         return data  
 
 
-class MetadataOperations(ABC):
-        
-    @abstractclassmethod
-    def show(self):
-        pass
-    
-    @abstractclassmethod
-    def remove(self):
-        pass
-        
-    @abstractclassmethod
-    def replace(self, device):
-        pass
-    
-    
-class Base(MetadataOperations):
+class Base:
     
     def __init__(self, file_path: str="") -> None:
         self._file_path = file_path
@@ -108,7 +92,6 @@ class JPG(Base):
         image_without_metadata.putdata(list(image.getdata()))
         image_without_metadata.save(new_file)
         
-        
     def _update_metadata(self, new_file: str, new_metadata: dict) -> None:
         exif_data = self._get_exif_data(new_file)
         print("Inserting metadata from template .. .. ..")
@@ -147,7 +130,8 @@ class JPG(Base):
         except piexif._exceptions.InvalidImageDataError:
             print("Error: Invalid image data")
             
-    
+   
+# Under construction 
 class PNG(Base):
     def show(self) -> None:
         ...

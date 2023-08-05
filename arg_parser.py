@@ -2,6 +2,7 @@
 
 import os
 import argparse
+from subprocess import Popen
 from typing import NamedTuple
 from metadata_operations import ReplacementData
 from exceptions import NoDataProvided, FileFormatNotSpecified, FileFormatIsNotSupported, WrongInputFormat, ArgumentRequiredError
